@@ -1,0 +1,272 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* Premium Black/Gold/Cream Palette */
+    --background: 40 20% 98%;
+    --foreground: 0 0% 4%;
+    
+    --card: 40 20% 99%;
+    --card-foreground: 0 0% 4%;
+    
+    --popover: 40 20% 99%;
+    --popover-foreground: 0 0% 4%;
+    
+    /* Deep charcoal black - primary */
+    --primary: 0 0% 4%;
+    --primary-foreground: 40 20% 98%;
+    
+    /* Warm gold accent */
+    --accent: 40 55% 58%;
+    --accent-foreground: 0 0% 4%;
+    
+    --secondary: 40 10% 94%;
+    --secondary-foreground: 0 0% 15%;
+    
+    --muted: 40 10% 92%;
+    --muted-foreground: 0 0% 40%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 40 15% 88%;
+    --input: 40 15% 88%;
+    --ring: 40 55% 58%;
+    
+    --radius: 0.5rem;
+    
+    /* Custom tokens */
+    --gold: 40 55% 58%;
+    --gold-light: 40 60% 75%;
+    --gold-dark: 40 50% 45%;
+    --cream: 40 20% 98%;
+    --cream-dark: 40 15% 94%;
+    --charcoal: 0 0% 4%;
+    --charcoal-light: 0 0% 15%;
+    
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(40 55% 58%), hsl(40 50% 45%));
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 4%), hsl(0 0% 8%));
+    --gradient-cream: linear-gradient(180deg, hsl(40 20% 98%), hsl(40 15% 94%));
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.03);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.05), 0 2px 4px -2px hsl(0 0% 0% / 0.03);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.05), 0 4px 6px -4px hsl(0 0% 0% / 0.03);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.08), 0 8px 10px -6px hsl(0 0% 0% / 0.03);
+    --shadow-gold: 0 4px 14px -2px hsl(40 55% 58% / 0.25);
+    
+    /* Sidebar (keeping defaults) */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 4%;
+    --foreground: 40 20% 98%;
+    
+    --card: 0 0% 6%;
+    --card-foreground: 40 20% 98%;
+    
+    --popover: 0 0% 6%;
+    --popover-foreground: 40 20% 98%;
+    
+    --primary: 40 20% 98%;
+    --primary-foreground: 0 0% 4%;
+    
+    --accent: 40 55% 58%;
+    --accent-foreground: 0 0% 4%;
+    
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 40 20% 98%;
+    
+    --muted: 0 0% 15%;
+    --muted-foreground: 40 10% 70%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 40 20% 98%;
+    
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 40 55% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Premium Button Variants */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 
+           bg-primary text-primary-foreground font-medium rounded-md
+           transition-all duration-200 ease-out
+           hover:opacity-90 active:scale-[0.98];
+  }
+  
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 
+           bg-accent text-accent-foreground font-semibold rounded-md
+           transition-all duration-200 ease-out
+           hover:brightness-110 active:scale-[0.98];
+    box-shadow: var(--shadow-gold);
+  }
+  
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 
+           bg-transparent border-2 border-primary text-primary font-medium rounded-md
+           transition-all duration-200 ease-out
+           hover:bg-primary hover:text-primary-foreground active:scale-[0.98];
+  }
+  
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 
+           bg-transparent text-foreground font-medium
+           transition-all duration-200 ease-out
+           hover:bg-muted;
+  }
+  
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 
+           bg-[#25D366] text-white font-semibold rounded-md
+           transition-all duration-200 ease-out
+           hover:bg-[#22c55e] active:scale-[0.98];
+  }
+  
+  /* Premium Card Styles */
+  .card-premium {
+    @apply bg-card rounded-lg p-6 md:p-8;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid hsl(var(--border));
+  }
+  
+  .card-dark {
+    @apply bg-primary text-primary-foreground rounded-lg p-6 md:p-8;
+  }
+  
+  .card-accent {
+    @apply bg-accent/10 border border-accent/20 rounded-lg p-6 md:p-8;
+  }
+  
+  /* Section Styles */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  .section-padding-sm {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+  
+  /* Container */
+  .container-custom {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Trust Badge */
+  .trust-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 
+           bg-secondary text-secondary-foreground text-sm font-medium 
+           rounded-full;
+  }
+  
+  /* Gold highlight text */
+  .text-gold {
+    color: hsl(var(--accent));
+  }
+  
+  /* Subtle divider */
+  .divider {
+    @apply w-full h-px bg-border;
+  }
+  
+  .divider-gold {
+    @apply w-16 h-1 bg-accent rounded-full;
+  }
+  
+  /* Form styles */
+  .form-input {
+    @apply w-full px-4 py-3 bg-background border border-input rounded-md
+           text-foreground placeholder:text-muted-foreground
+           focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent
+           transition-all duration-200;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-foreground mb-2;
+  }
+  
+  /* Floating WhatsApp */
+  .whatsapp-float {
+    @apply fixed bottom-6 right-6 z-50 w-14 h-14 
+           bg-[#25D366] text-white rounded-full 
+           flex items-center justify-center
+           shadow-lg hover:scale-110 transition-transform duration-200;
+  }
+  
+  /* Premium list */
+  .list-premium li {
+    @apply flex items-start gap-3 py-2;
+  }
+  
+  .list-premium li::before {
+    content: '';
+    @apply w-1.5 h-1.5 rounded-full bg-accent mt-2.5 flex-shrink-0;
+  }
+}
+
+/* Smooth animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Delay utilities */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
